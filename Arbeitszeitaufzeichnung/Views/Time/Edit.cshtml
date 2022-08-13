@@ -1,0 +1,62 @@
+﻿@model Arbeitszeitaufzeichnung.Models.ViewModels.TimeStampEditVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TimePrevious" />
+            <input type="hidden" asp-for="TimeFollowing" />
+            <div class="form-group">
+                @if (Model.TimePrevious == default && Model.TimeFollowing == default)
+                {
+                    <p>
+                        Set new time
+                    </p>
+                }
+                else if (Model.TimePrevious == default)
+                {
+                    <p>
+                        Time needs to be before @Model.TimeFollowing
+                    </p>
+                }
+                else if (Model.TimeFollowing == default)
+                {
+                    <p>
+                        Time needs to be after @Model.TimePrevious
+                    </p>
+                }
+                else
+                {
+                    <p>Time needs to be between @Model.TimePrevious and @Model.TimeFollowing</p>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeCurrent" class="control-label"></label>
+                <input asp-for="TimeCurrent" class="form-control" />
+                <span asp-validation-for="TimeCurrent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

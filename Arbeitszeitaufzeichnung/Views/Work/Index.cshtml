@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Arbeitszeitaufzeichnung.Models.ViewModels.WorktimeVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Come)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Go)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumBreak)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongestBreak)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalBreakTime)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Come)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Go)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumBreak)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongestBreak)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalBreakTime)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
